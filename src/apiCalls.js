@@ -3,7 +3,7 @@ import axios from "axios";
 export const loginCall = async (userCredential, dispatch) => {
   dispatch({ type: "LOGIN_START" });
   try {
-    const res = await axios.post("/auth/login", userCredential);
+    const res = await axios.post("https://chat-messenger-server.herokuapp.com/api/auth/login", userCredential);
     console.log(res.data);
     dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
   } catch (err) {
