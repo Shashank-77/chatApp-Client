@@ -20,7 +20,7 @@ export default function Messenger() {
   const scrollRef = useRef();
 
   useEffect(() => {
-    socket.current = io("ws://chat-messenger-server.herokuapp.com");
+    socket.current = io("https://chat-messenger-server.herokuapp.com");
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,
