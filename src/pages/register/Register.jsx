@@ -28,7 +28,7 @@ export default function Register() {
 
       };
       try {
-        await axios.post("/auth/register", user);
+        await axios.post("https://chat-messenger-server.herokuapp.com/api/auth/register", user);
         history.push("/login");
       } catch (err) {
         console.log(err);

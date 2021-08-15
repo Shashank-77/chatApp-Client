@@ -15,7 +15,7 @@ export default function Profile() {
   useEffect(() => {
     // console.log(username);
     const fetchUser = async () => {
-      const res = await axios.get(`/users?username=${username}`);
+      const res = await axios.get(`https://chat-messenger-server.herokuapp.com/api/users?username=${username}`);
       // console.log("HI");
       setUser(res.data);
     };

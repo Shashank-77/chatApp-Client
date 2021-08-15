@@ -21,7 +21,7 @@ export default function Rightbar({ user }) {
     const getFriends = async () => {
       try {
         // console.log(user);
-        const friendList = await axios.get("/users/friends/" + user._id);
+        const friendList = await axios.get("https://chat-messenger-server.herokuapp.com/api/users/friends/" + user._id);
         setFriends(friendList.data);
       
       } catch (err) {
@@ -35,20 +35,20 @@ export default function Rightbar({ user }) {
     try {
       // console.log(followed,currentUser,user._id,"HI");
       if (followed) {
-        await axios.put(`/users/${user._id}/unfollow`, {
+        await axios.put(`https://chat-messenger-server.herokuapp.com/api/users/${user._id}/unfollow`, {
           userId: currentUser._id,
         });
         dispatch({ type: "UNFOLLOW", payload: user._id });
       } else {
-        await axios.put(`/users/${user._id}/follow`, {
+        await axios.put(`https://chat-messenger-server.herokuapp.com/api/users/${user._id}/follow`, {
           userId: currentUser._id,
         });
         dispatch({ type: "FOLLOW", payload: user._id });
 
-        const res = await axios.get(`/conversations/find/${user._id}/${currentUser._id}`,{});
+        const res = await axios.get(`https://chat-messenger-server.herokuapp.com/api/conversations/find/${user._id}/${currentUser._id}`,{});
         console.log(res,"HELOOO");
         if(res.data == null){
-          await axios.post(`/conversations/`,{
+          await axios.post(`https://chat-messenger-server.herokuapp.com/api/conversations/`,{
             senderId: currentUser._id,
             receiverId: user._id,
           });
